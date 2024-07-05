@@ -1,0 +1,18 @@
+services:
+
+  vote:
+    build: ./
+    ports: ["80:80"]
+    env_file: .env
+    depends_on:
+      - redis
+    networks:
+      - integration
+
+  redis:
+    image: redis:alpine
+    networks:
+      - integration
+
+networks:
+  integration:
