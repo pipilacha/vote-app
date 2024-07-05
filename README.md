@@ -1,3 +1,5 @@
+### CI
+
 ### Environment variables
 List on env variables used in code (NAME,default value):
 * OPTION_A, "Cats"
