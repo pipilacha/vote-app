@@ -1,5 +1,5 @@
 ### CI
-CI is handled by Jenkins Pipelines
+CI is handled by Jenkins Pipelines. Main and develop are protected and Jenkins Pipeline must succeed before merging.
 
 ### Environment variables
 List on env variables used in code (NAME,default value):
