@@ -1,4 +1,5 @@
 ### CI
+CI is handled by Jenkins Pipelines
 
 ### Environment variables
 List on env variables used in code (NAME,default value):
