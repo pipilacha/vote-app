@@ -1,6 +1,12 @@
 pipeline {
     agent none
     stages{
+        stage('get all envs'){
+            steps{
+                agent {}
+                sh 'printenv'
+            }
+        }
         stage('running unit tests'){
             agent {
                 docker {
@@ -12,7 +18,6 @@ pipeline {
                 echo 'Building vote app'
                 sh 'pip install -r requirements.txt'
                 sh 'nosetests tests/'
-                printenv
             }
         }
         stage('docker-package-dev') {
