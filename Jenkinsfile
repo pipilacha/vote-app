@@ -1,12 +1,6 @@
 pipeline {
     agent none
     stages{
-        stage('get all envs'){
-            agent any
-            steps{
-                sh 'printenv'
-            }
-        }
         stage('running unit tests'){
             agent {
                 docker {
@@ -44,7 +38,7 @@ pipeline {
                 echo 'Packaging vote app with docker'
                 script {
                     docker.withRegistry('https://index.docker.io/v1/','docker-login') {
-                        def workerImage = docker.build ("${env.GIT_URL.tokenize('/.')[-3]}/vote-app:${env.CHANGE_BRANCH.tokenize('/')[-1]}-${env.BUILD_ID}", '.')
+                        def workerImage = docker.build ("${env.GIT_URL.tokenize('/.')[-3]}/vote-app:${env.CHANGE_BRANCH.tokenize('/')[-1]}", '.')
                         workerImage.push()
                         workerImage.push('latest')
                     }
