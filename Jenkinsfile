@@ -12,6 +12,7 @@ pipeline {
                 echo 'Building vote app'
                 sh 'pip install -r requirements.txt'
                 sh 'nosetests tests/'
+                echo branch
             }
         }
         stage('docker-package-dev') {
