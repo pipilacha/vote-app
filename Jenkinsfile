@@ -2,8 +2,8 @@ pipeline {
     agent none
     stages{
         stage('get all envs'){
+            agent any
             steps{
-                agent any
                 sh 'printenv'
             }
         }
