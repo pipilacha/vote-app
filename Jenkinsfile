@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('get all envs'){
             steps{
-                agent {}
+                agent any
                 sh 'printenv'
             }
         }
