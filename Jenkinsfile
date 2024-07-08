@@ -14,5 +14,21 @@ pipeline {
                 sh 'nosetests tests/'
             }
         }
+        stage('docker-package-dev') {
+            when {
+                branch 'develop'
+            }
+            agent any
+            steps {
+                echo 'Packaging vote app with docker'
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/','docker-login') {
+                        def workerImage = docker.build ("${env.GIT_URL.tokenize('/.')[-3]}/vote-app:${env.BRANCH_NAME}-${env.BUILD_ID}", './vote')
+                        workerImage.push()
+                        workerImage.push('latest')
+                    }
+                }
+            }
+        }
     }
 }
