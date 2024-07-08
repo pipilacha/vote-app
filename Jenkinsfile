@@ -25,7 +25,7 @@ pipeline {
                 echo 'Packaging vote app with docker'
                 script {
                     docker.withRegistry('https://index.docker.io/v1/','docker-login') {
-                        def workerImage = docker.build ("${env.GIT_URL.tokenize('/.')[-3]}/vote-app:${env.BRANCH_NAME}-${env.BUILD_ID}", './vote')
+                        def workerImage = docker.build ("${env.GIT_URL.tokenize('/.')[-3]}/vote-app:${env.CHANGE_BRANCH}-${env.BUILD_ID}", '.')
                         workerImage.push()
                         workerImage.push('latest')
                     }
