@@ -18,7 +18,7 @@ pipeline {
         }
         stage('docker-package-dev') {
             when {
-                branch 'feature/*|bugfix/*'
+                environment name: 'CHANGE_TARGET', value: 'develop'
             }
             agent any
             steps {
