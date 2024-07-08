@@ -12,7 +12,8 @@ pipeline {
                 echo 'Building vote app'
                 sh 'pip install -r requirements.txt'
                 sh 'nosetests tests/'
-                echo env.BRANCH_NAME
+                echo env.CHANGE_BRANCH
+                echo env.CHANGE_TARGET
             }
         }
         stage('docker-package-dev') {
